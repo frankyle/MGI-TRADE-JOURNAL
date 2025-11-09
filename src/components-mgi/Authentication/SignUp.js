@@ -1,5 +1,3 @@
-// src/components/SignUp.js
-
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Lock, Mail, User, Phone } from "lucide-react";
@@ -8,7 +6,7 @@ import { supabase } from "../../supabaseClient";
 
 export default function SignUp() {
   const [name, setName] = useState("");
-  const [phone, setPhone] = useState(""); // ✅ Added phone state
+  const [phone, setPhone] = useState(""); 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -17,20 +15,21 @@ export default function SignUp() {
     e.preventDefault();
 
     try {
-      const { data, error } = await supabase.auth.signUp({
-        email: email,
-        password: password,
+      // 👇 Removed unused "data" variable to fix ESLint warning
+      const { error } = await supabase.auth.signUp({
+        email,
+        password,
         options: {
           data: {
             full_name: name,
-            phone: phone, // ✅ Save phone number in metadata
+            phone, // save phone to user_metadata
           },
         },
       });
 
       if (error) throw error;
 
-      alert("Registration successful! Please check your email to verify your account.");
+      alert("✅ Registration successful! Please check your email to verify your account.");
       navigate("/signin");
     } catch (error) {
       alert(error.message);
@@ -69,7 +68,7 @@ export default function SignUp() {
             <Phone className="absolute left-3 top-3 text-emerald-500" size={20} />
             <input
               type="tel"
-              placeholder="Whatsapp Number"
+              placeholder="WhatsApp Number"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               className="w-full pl-10 pr-4 py-2 border border-emerald-200 rounded-lg focus:ring-2 focus:ring-emerald-400 outline-none"
