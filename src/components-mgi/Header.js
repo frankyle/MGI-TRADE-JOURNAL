@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "../images/MGI logo.png";
@@ -9,7 +9,7 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [fullName, setFullName] = useState(""); // Hali mpya kwa ajili ya jina la mtumiaji
-  const [progressOpen, setProgressOpen] = useState(false);
+  // const [progressOpen, setProgressOpen] = useState(false);
 
   // Tumia useEffect kuangalia hali ya mtumiaji
   useEffect(() => {
@@ -60,7 +60,7 @@ const Header = () => {
   };
 
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
-  const toggleProgress = () => setProgressOpen(!progressOpen);
+  // const toggleProgress = () => setProgressOpen(!progressOpen);
 
   return (
     <header className="fixed top-0 left-0 w-full z-50">
@@ -289,16 +289,16 @@ function NavLink({ to, label, close }) {
   );
 }
 
-function DropdownLink({ to, label, close }) {
-  return (
-    <Link
-      to={to}
-      onClick={close}
-      className="block px-4 py-2 text-gray-800 hover:bg-green-50 hover:text-green-700 rounded-md transition"
-    >
-      {label}
-    </Link>
-  );
-}
+// function DropdownLink({ to, label, close }) {
+//   return (
+//     <Link
+//       to={to}
+//       onClick={close}
+//       className="block px-4 py-2 text-gray-800 hover:bg-green-50 hover:text-green-700 rounded-md transition"
+//     >
+//       {label}
+//     </Link>
+//   );
+// }
 
 export default Header;
