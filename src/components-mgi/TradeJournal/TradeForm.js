@@ -108,7 +108,7 @@ const TradeForm = ({
         setup_image: uploadedImages.setupImage,
         entry_image: uploadedImages.entryImage,
         profit_image: uploadedImages.profitImage,
-        updated_at: new Date().toISOString(),
+        // updated_at: new Date().toISOString(),
       };
 
       if (editIndex !== null && form.id) {
